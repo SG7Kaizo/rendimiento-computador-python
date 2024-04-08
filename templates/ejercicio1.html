@@ -101,9 +101,38 @@
                         </div>
                     </div>
                     <h2>Resultado</h2>
-                    
+                    <div id="resultado">
+                        <p>Resultado de tiempo:
+                            <span
+                                id="resultado-tiempo">
+                            </span>
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
+        <script>
+            // Función para desmarcar el otro checkbox
+            function desmarcarOtroCheckbox(checkboxId) {
+                var otroCheckboxId = checkboxId === "checkbox1" ? "checkbox2" : "checkbox1";
+                var otroCheckbox = document.getElementById(otroCheckboxId);
+                otroCheckbox.checked = false;
+            }
+            
+            // Agrega eventos de cambio para los checkboxes
+            document.getElementById("checkbox1").addEventListener("change", function() {
+                if (this.checked) {
+                    desmarcarOtroCheckbox("checkbox1");
+                }
+            });
+            
+            document.getElementById("checkbox2").addEventListener("change", function() {
+                if (this.checked) {
+                    desmarcarOtroCheckbox("checkbox2");
+                }
+            });
+            
+        </script>
     </body>
 </html>
