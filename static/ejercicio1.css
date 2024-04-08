@@ -1,0 +1,351 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    /* Para ocultar la barra de desplazamiento */
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    --s: 200px;
+    /* control the size */
+    --c1: #1d1d1d;
+    --c2: #4e4f51;
+    --c3: #3c3c3c;
+
+    background: repeating-conic-gradient(from 30deg,
+            #0000 0 120deg,
+            var(--c3) 0 180deg) calc(0.5 * var(--s)) calc(0.5 * var(--s) * 0.577),
+        repeating-conic-gradient(from 30deg,
+            var(--c1) 0 60deg,
+            var(--c2) 0 120deg,
+            var(--c3) 0 180deg);
+    background-size: var(--s) calc(var(--s) * 0.577);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para el div global */
+.global-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0);
+    padding: 15px;
+    
+}
+
+.title-container h1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    text-shadow: 0px 0px 5px #000000;
+    
+}
+
+/* Estilos para el contenedor del título */
+.title-container {
+    background-color: rgba(216, 216, 216, 0);
+    color: white;
+    text-align: center;
+    height: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin-bottom: 5px;
+    
+}
+
+/* Estilos para el contenedor principal */
+.main-container {
+    background-color: rgba(226, 226, 226, 0.644);
+    height: 95%;
+    padding: 10px;
+    margin-top: 5px;
+    display: flex;
+    border-radius: 10px;
+}
+
+.left-card h2 {
+    text-align: center;
+    color: #114092;
+}
+
+.right-card {
+    flex: 1;
+    /* Las tarjetas ocupan igualmente el espacio disponible */
+    margin: 0 5px;
+    /* Margen entre las tarjetas */
+    padding: 10px;
+    /* Padding de 10px en las tarjetas */
+    background-image: linear-gradient(to top, #dfe9f3 0%, white 100%);
+    border-radius: 10px;
+    /* Fondo blanco */
+}
+
+.left-card {
+    flex: 1;
+    /* Las tarjetas ocupan igualmente el espacio disponible */
+    margin: 0 5px;
+    /* Margen entre las tarjetas */
+    padding: 10px;
+    /* Padding de 10px en las tarjetas */
+    background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+    border-radius: 10px;
+}
+
+.material-checkbox {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: #050505;
+    cursor: pointer;
+}
+
+.material-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkmark {
+    position: relative;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    border: 2px solid #114092;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.material-checkbox input[type="checkbox"]:checked~.checkmark {
+    background-color: #007728;
+    border-color: #a1a579;
+}
+
+.material-checkbox input[type="checkbox"]:checked~.checkmark:after {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 4px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.material-checkbox input[type="checkbox"]:focus~.checkmark {
+    box-shadow: 0 0 0 2px #dfec5065;
+}
+
+.material-checkbox:hover input[type="checkbox"]~.checkmark {
+    border-color: #009431;
+}
+
+.material-checkbox input[type="checkbox"]:disabled~.checkmark {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.material-checkbox input[type="checkbox"]:disabled~.checkmark:hover {
+    border-color: #4d4d4d;
+}
+
+.checkbox-group1 {
+    margin-bottom: 5px;
+    /* Agregar margen inferior de 5px */
+}
+
+.checkbox-group2 {
+    margin-top: 10px;
+    /* Agregar margen superior de 10px */
+    margin-bottom: 5px;
+    /* Agregar margen inferior de 5px */
+}
+
+.input-group1 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.input-group1 label {
+    margin-right: 5px;
+}
+
+.input-group1 input[type="number"] {
+    display: block;
+}
+
+.input-group1 select {
+    margin-left: 5px;
+}
+
+/* ****** */
+.input-group2 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.input-group2 label {
+    margin-right: 5px;
+}
+
+.input-group2 input[type="number"] {
+    display: block;
+}
+
+.input-group2 select {
+    margin-left: 5px;
+}
+
+.table-group {
+    padding-top: 25px;
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    /* Fondo blanco */
+}
+
+.result-table th,
+.result-table td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    color: black;
+    /* Texto negro */
+}
+
+.result-table th {
+    background-color: #114092;
+    /* Fondo azul para encabezado de columnas */
+    color: white;
+    /* Texto blanco */
+}
+
+.result-table input {
+    border: none;
+    outline: none;
+    /* Para eliminar el contorno al hacer clic */
+}
+
+.button-group {
+    padding-top: 15px;
+}
+
+.button-group button {
+
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.button-group button:hover {
+    background-color: #0056b3;
+}
+
+.Ecuacion {
+    display: flex;
+    align-items: center;
+    /* Alinea verticalmente los elementos */
+}
+
+.Tejx {
+    display: flex;
+    align-items: center;
+    /* Alinea verticalmente los elementos */
+}
+
+.Tejx p {
+    margin: 0;
+}
+
+.Resul p {
+    margin: 0 5px;
+    display: block;
+}
+
+.Resul span {
+    margin: 5px;
+    
+}
+
+.Resul {
+    display: flex;
+    flex-direction: column;
+    /* Establece la dirección de los elementos como columna */
+    align-items: center;
+    /* Alinea horizontalmente los elementos */
+    justify-content: center;
+    /* Alinea verticalmente los elementos */
+}
+
+.fraction-line {
+    border-top: 1px solid black;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 5px;
+    width: 50px;
+}
+
+/* Media query para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        /* Cambiar la dirección del contenedor principal a columna */
+    }
+
+    .left-card,
+    .right-card {
+        margin: 5px 0;
+        /* Añadir un pequeño margen superior e inferior */
+    }
+}
+
+/* Media query para pantallas más grandes */
+@media (min-width: 769px) {
+    .main-container {
+        flex-direction: row;
+        /* Restablecer la dirección del contenedor principal a fila */
+    }
+
+    .left-card,
+    .right-card {
+        margin: 0 5px;
+        /* Añadir un pequeño margen izquierdo y derecho */
+    }
+}
+
+@media (max-width: 576px) {
+    .table-group {
+        overflow-x: auto;
+        /* Agregar desplazamiento horizontal en pantallas pequeñas */
+    }
+
+    .result-table {
+        /* Establecer un ancho máximo para evitar que la tabla se desborde */
+        max-width: 100%;
+    }
+
+    .result-table th,
+    .result-table td {
+        /* Hacer que las celdas ocupen el espacio disponible y se ajusten automáticamente */
+        width: auto;
+    }
+}

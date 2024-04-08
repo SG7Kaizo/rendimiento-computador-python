@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/static/ejercicio1.css">
+        <title>Título y Contenedor</title>
+    </head>
+    <body>
+        <div class="global-container">
+            <div class="title-container">
+                <h1>Cálculos de Frecuencia y Tiempo por Instrucciones</h1>
+            </div>
+            <div class="main-container">
+                <div class="left-card">
+                    <h2>Ingreso de Datos</h2>
+                    <h3>Encontrar:</h3>
+                    <div class="checkbox-group1">
+                        <label class="material-checkbox">
+                            <input type="checkbox" id="checkbox1"
+                                name="checkbox1">
+                            <span class="checkmark"></span>
+                            Tiempo de Ejecucion (Tejx)
+                        </label>
+                    </div>
+                    <div class="checkbox-group2">
+                        <label class="material-checkbox">
+                            <input type="checkbox" id="checkbox2"
+                                name="checkbox2">
+                            <span class="checkmark"></span>
+                            Frecuencia (F)
+                        </label>
+                    </div>
+
+                    <div class="input-group1">
+                        <label for="tiempo">Tiempo:</label>
+                        <input type="number" id="tiempo" name="tiempo">
+                        <select id="magnitud_tiempo" name="magnitud_tiempo">
+                            <option value="seg">Segundos</option>
+                            <option value="nseg">Nanosegundos</option>
+                            <option value="useg">Microsegundos</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group2">
+                        <label for="frecuencia">Frecuencia:</label>
+                        <input type="number" id="frecuencia" name="frecuencia">
+                        <select id="magnitud_frecuencia"
+                            name="magnitud_frecuencia">
+                            <option value="Hz">Hz</option>
+                            <option value="KHz">KHz</option>
+                            <option value="MHz">MHz</option>
+                            <option value="GHz">GHz</option>
+                        </select>
+                    </div>
+
+                    <div class="button-group">
+                        <button onclick="calcular()">Calcular</button>
+                    </div>
+
+                    <div class="table-group">
+                        <table class="result-table">
+                            <thead>
+                                <tr>
+                                    <th>Instrucciones</th>
+                                    <th>Ciclos</th>
+                                    <th>Repeticiones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="text" value="A"></td>
+                                    <td><input type="text" value="5"></td>
+                                    <td><input type="text" value="1000"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" value="B"></td>
+                                    <td><input type="text" value="10"></td>
+                                    <td><input type="text" value="600"></td>
+                                </tr>
+                                <tr>
+                                    <td><input type="text" value="C"></td>
+                                    <td><input type="text" value="4"></td>
+                                    <td><input type="text" value="800"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="right-card">
+                    <!-- Contenido de la segunda tarjeta -->
+                    <h2>Ecuacion</h2>
+                    <div class="Ecuacion">
+                        <div class="Tejx">
+                            <p>Tejx =</p>
+                        </div>
+                        <div class="Resul">
+                            <p>∑ Ciclos</p>
+                            <span class="fraction-line"></span>
+                            <p>F</p>
+                        </div>
+                    </div>
+                    <h2>Resultado</h2>
+                    
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
