@@ -12,6 +12,7 @@
                 <h1>Cálculos de Frecuencia y Tiempo por Instrucciones</h1>
             </div>
             <div class="main-container">
+
                 <div class="left-card">
                     <h2>Ingreso de Datos</h2>
                     <h3>Encontrar:</h3>
@@ -32,31 +33,36 @@
                         </label>
                     </div>
 
-                    <div class="input-group1">
-                        <label for="tiempo">Tiempo:</label>
-                        <input type="number" id="tiempo" name="tiempo">
-                        <select id="magnitud_tiempo" name="magnitud_tiempo">
-                            <option value="seg">Segundos</option>
-                            <option value="nseg">Nanosegundos</option>
-                            <option value="useg">Microsegundos</option>
-                        </select>
-                    </div>
+                    <form class="form" action="/ejercicio1" method="post"
+                        onsubmit="return validarCampos();">
+                        <div class="input-group1">
+                            <label for="tiempo">Tiempo:</label>
+                            <input type="text" id="tiempo" name="tiempo">
+                            <select id="magnitud_tiempo" name="magnitud_tiempo">
+                                <option value></option>
+                                <option value="seg">Segundos</option>
+                                <option value="nseg">Nanosegundos</option>
+                                <option value="mseg">Microsegundos</option>
+                            </select>
+                        </div>
 
-                    <div class="input-group2">
-                        <label for="frecuencia">Frecuencia:</label>
-                        <input type="number" id="frecuencia" name="frecuencia">
-                        <select id="magnitud_frecuencia"
-                            name="magnitud_frecuencia">
-                            <option value="Hz">Hz</option>
-                            <option value="KHz">KHz</option>
-                            <option value="MHz">MHz</option>
-                            <option value="GHz">GHz</option>
-                        </select>
-                    </div>
+                        <div class="input-group2">
+                            <label for="frecuencia">Frecuencia:</label>
+                            <input type="number" id="frecuencia"
+                                name="frecuencia">
+                            <select id="magnitud_frecuencia"
+                                name="magnitud_frecuencia">
+                                <option value="Hz">Hz</option>
+                                <option value="KHz">KHz</option>
+                                <option value="MHz">MHz</option>
+                                <option value="GHz">GHz</option>
+                            </select>
+                        </div>
 
-                    <div class="button-group">
-                        <button onclick="calcular()">Calcular</button>
-                    </div>
+                        <div class="button-group"></div>
+                        <button type="submit"
+                            value="ejercicio1">Calcular</button>
+                    </form>
 
                     <div class="table-group">
                         <table class="result-table">
@@ -71,7 +77,8 @@
                                 <tr>
                                     <td><input type="text" value="A"></td>
                                     <td><input type="text" value="5"></td>
-                                    <td><input type="text" value="1000"></td>
+                                    <td><input type="text"
+                                            value="1000"></td>
                                 </tr>
                                 <tr>
                                     <td><input type="text" value="B"></td>
@@ -102,18 +109,32 @@
                     </div>
                     <h2>Resultado</h2>
                     <div id="resultado">
-                        <p>Resultado de tiempo:
-                            <span
-                                id="resultado-tiempo">
-                            </span>
-                        </p>
+                        {% if request.method == 'POST' %}
+                        <p>Resultado de tiempo: {{ tiempo }}</p>
+                        {% endif %}
                     </div>
+
+                    <button onclick="limpiar()">Limpiar
+                        Resultado</button>
 
                 </div>
             </div>
         </div>
         <script>
-            // Función para desmarcar el otro checkbox
+            function validarCampos() {
+                var tiempoInput = document.getElementById("tiempo").value;
+                // Obtener los valores de los campos de entrada
+                var frecuenciaInput = document.getElementById("frecuencia").value;
+
+                // Validar si los campos están vacíos
+                if (tiempoInput === "" || frecuenciaInput === "") {
+                    alert("Por favor completa todos los campos antes de calcular.");
+                    return false; // Detener el envío del formulario
+                }
+                return true; // Permitir el envío del formulario si todos los campos están completos
+            }
+
+
             function desmarcarOtroCheckbox(checkboxId) {
                 var otroCheckboxId = checkboxId === "checkbox1" ? "checkbox2" : "checkbox1";
                 var otroCheckbox = document.getElementById(otroCheckboxId);
@@ -122,17 +143,51 @@
             
             // Agrega eventos de cambio para los checkboxes
             document.getElementById("checkbox1").addEventListener("change", function() {
+                var tiempoInput = document.getElementById("tiempo");
                 if (this.checked) {
                     desmarcarOtroCheckbox("checkbox1");
+                    tiempoInput.disabled = true;
+                    tiempoInput.value = "0";
+                    cambiarEtiquetasResultado('T');
+                }else{
+                    tiempoInput.disabled = false;
+                    tiempoInput.value = "";
                 }
             });
             
             document.getElementById("checkbox2").addEventListener("change", function() {
+                var frecuenciaInput = document.getElementById("frecuencia");
                 if (this.checked) {
                     desmarcarOtroCheckbox("checkbox2");
+                    frecuenciaInput.disabled = true;
+                    frecuenciaInput.value = "0";
+                    cambiarEtiquetasResultado('F');
+                }else{
+                    frecuenciaInput.disabled = false;
+                    frecuenciaInput.value = "";
                 }
             });
+
+            function cambiarEtiquetasResultado(opcion) {
+                var tejxElemento = document.querySelector('.Tejx p');
+                var fElemento = document.querySelector('.Resul p:nth-child(3)');
+
+                if (opcion === 'T') {
+                    tejxElemento.textContent = 'Tejx =';
+                    fElemento.textContent = 'F';
+                } else if (opcion === 'F') {
+                    tejxElemento.textContent = 'F =';
+                    fElemento.textContent = 'Tejx';
+                }
+            }
+
             
+            function limpiarResultado() {
+                var tiempoInput = document.getElementById("resul");
+                document.getElementById("resul").innerHTML = "";
+                
+            }
+        
         </script>
     </body>
 </html>

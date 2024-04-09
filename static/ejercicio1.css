@@ -213,6 +213,10 @@ body {
     padding-top: 25px;
 }
 
+input[disabled] {
+    color: transparent;
+}
+
 .result-table {
     width: 100%;
     border-collapse: collapse;
